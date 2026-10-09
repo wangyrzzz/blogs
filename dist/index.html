@@ -1,0 +1,1459 @@
+<html
+    lang="zh-CN"
+>
+    <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+    <meta name="renderer" content="webkit" />
+    <meta name="author" content="Notebook" />
+    <meta name="copyright" content="Notebook" />
+
+    <!-- SEO Keywords -->
+    
+        <meta name="keywords" content="Java开发笔记,Notebook" />
+    
+
+    
+        <meta name="description" content="Java开发笔记" />
+    
+
+    <meta http-equiv="Cache-control" content="no-cache" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+    <!-- Favicon -->
+    <link rel="icon" href="" />
+
+    <!-- SEO Title -->
+    
+        <title>Java开发笔记</title>
+    
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:type" content="website" />
+    <meta
+        property="og:title"
+        content="Java开发笔记"
+    />
+    <meta
+        property="og:url"
+        content="https://www.hideshadow.com"
+    />
+    <meta property="og:site_name" content="Java开发笔记" />
+    <meta
+        property="og:description"
+        content="Java开发笔记"
+    />
+    <meta property="og:locale" content="zh" />
+    
+    
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+        name="twitter:title"
+        content="Java开发笔记"
+    />
+    <meta
+        name="twitter:description"
+        content="Java开发笔记"
+    />
+    
+    
+
+    <!-- Facebook Meta -->
+    
+    
+
+    <!-- Base preload polyfill -->
+    <script>
+        (function (w) {
+            'use strict';
+            if (!w.loadCSS) {
+                w.loadCSS = function () {};
+            }
+            var rp = (loadCSS.relpreload = {});
+            rp.support = (function () {
+                var ret;
+                try {
+                    ret = w.document.createElement('link').relList.supports('preload');
+                } catch (e) {
+                    ret = false;
+                }
+                return function () {
+                    return ret;
+                };
+            })();
+            rp.bindMediaToggle = function (link) {
+                var finalMedia = link.media || 'all';
+                function enableStylesheet() {
+                    link.media = finalMedia;
+                }
+                if (link.addEventListener) {
+                    link.addEventListener('load', enableStylesheet);
+                } else if (link.attachEvent) {
+                    link.attachEvent('onload', enableStylesheet);
+                }
+                setTimeout(function () {
+                    link.rel = 'stylesheet';
+                    link.media = 'only x';
+                });
+                setTimeout(enableStylesheet, 3000);
+            };
+            rp.poly = function () {
+                if (rp.support()) {
+                    return;
+                }
+                var links = w.document.getElementsByTagName('link');
+                for (var i = 0; i < links.length; i++) {
+                    var link = links[i];
+                    if (
+                        link.rel === 'preload' &&
+                        link.getAttribute('as') === 'style' &&
+                        !link.getAttribute('data-loadcss')
+                    ) {
+                        link.setAttribute('data-loadcss', true);
+                        rp.bindMediaToggle(link);
+                    }
+                }
+            };
+            if (!rp.support()) {
+                rp.poly();
+                var run = w.setInterval(rp.poly, 500);
+                if (w.addEventListener) {
+                    w.addEventListener('load', function () {
+                        rp.poly();
+                        w.clearInterval(run);
+                    });
+                } else if (w.attachEvent) {
+                    w.attachEvent('onload', function () {
+                        rp.poly();
+                        w.clearInterval(run);
+                    });
+                }
+            }
+            if (typeof exports !== 'undefined') {
+                exports.loadCSS = loadCSS;
+            } else {
+                w.loadCSS = loadCSS;
+            }
+        })(typeof global !== 'undefined' ? global : this);
+    </script>
+
+    <!-- Stylesheets -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+        integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm"
+        crossorigin="anonymous"
+    />
+    <link
+        id="stylesheet-fancybox"
+        rel="preload"
+        href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.36/dist/fancybox/fancybox.css"
+        as="style"
+        integrity="sha384-qlUhevqmCF5AxtnfkF0zXJClBzA6GJuX/UrLejCfE61bBGt+zo/My0AJ+ojVmUSb"
+        crossorigin="anonymous"
+        onload="
+            this.onload = null;
+            this.rel = 'stylesheet';
+        "
+    />
+    <noscript>
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.36/dist/fancybox/fancybox.css"
+            integrity="sha384-qlUhevqmCF5AxtnfkF0zXJClBzA6GJuX/UrLejCfE61bBGt+zo/My0AJ+ojVmUSb"
+            crossorigin="anonymous"
+        />
+    </noscript>
+    <link
+        id="stylesheet-base"
+        rel="preload"
+        href="/themes/halo-theme-archer/assets/dist/base.css"
+        as="style"
+        onload="
+            this.onload = null;
+            this.rel = 'stylesheet';
+        "
+    />
+    <link
+        id="stylesheet-sidebar"
+        rel="preload"
+        href="/themes/halo-theme-archer/assets/dist/sidebar.css"
+        as="style"
+        onload="
+            this.onload = null;
+            this.rel = 'stylesheet';
+        "
+    />
+    <noscript><link rel="stylesheet" href="/themes/halo-theme-archer/assets/dist/base.css"><link rel="stylesheet" href="/themes/halo-theme-archer/assets/dist/sidebar.css"></noscript>
+    
+    <link
+        id="stylesheet-mobile"
+        rel="preload"
+        href="/themes/halo-theme-archer/assets/dist/mobile.css"
+        as="style"
+        onload="
+            this.onload = null;
+            this.rel = 'stylesheet';
+            this.media = 'screen and (max-width: 960px)';
+        "
+    />
+    <noscript>
+        <link rel="stylesheet" href="/themes/halo-theme-archer/assets/dist/mobile.css" media="screen and (max-width: 960px)" />
+    </noscript>
+
+    <script>
+        // 为代码高亮插件添加暗色模式支持（需在 CSS 加载前执行）
+        (function () {
+            var isDark =
+                localStorage.preferredThemeMode === 'dark' ||
+                (!localStorage.preferredThemeMode && window.matchMedia('(prefers-color-scheme: dark)').matches);
+            if (isDark) {
+                document.documentElement.classList.add('dark');
+            }
+        })();
+    </script>
+
+    <!-- Fonts -->
+
+    <link rel="preload" href="/themes/halo-theme-archer/assets/font/Oswald-Regular.ttf" as="font" type="font/ttf" crossorigin />
+    <link
+        rel="preload"
+        href="https://at.alicdn.com/t/font_327081_1dta1rlogw17zaor.woff"
+        as="font"
+        type="font/woff"
+        crossorigin
+    />
+    <link
+        rel="stylesheet"
+        href="https://at.alicdn.com/t/font_327081_1dta1rlogw17zaor.css"
+        integrity="sha384-C0gGHuE2m2aydcd5JYOecH4uZAT950Fp42rkjNOuJ/Fwn3e1OgxRGDYLNUlS4XNb"
+        crossorigin="anonymous"
+    />
+
+    <!-- Algolia Search Configuration -->
+    
+
+    <!-- Baidu Analytics -->
+    
+
+    <!-- CNZZ Analytics -->
+    
+
+    <!-- Google Analytics (gtag.js) -->
+    
+    
+
+    <style
+    >:root{--main-color-light: #f75357; --main-color-dark: #f75357; --main-color: var(--main-color-light); --halo-search-widget-primary-color: var(--main-color);}</style>
+    <script>
+        (function () {
+            const updateThemeColor = () => {
+                const isDark = document.documentElement.classList.contains('dark');
+                const colorVar = isDark ? 'var(--main-color-dark)' : 'var(--main-color-light)';
+                document.documentElement.style.setProperty('--main-color', colorVar);
+            };
+
+            // Initial check
+            document.addEventListener('DOMContentLoaded', updateThemeColor);
+
+            // Observer for dynamic changes
+            const observer = new MutationObserver(updateThemeColor);
+            observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
+        })();
+    </script>
+<style>
+  .copyright, main-content__footer {
+      display: none !important;
+  }
+</style>
+</head>
+
+    <body
+        class="home-body"
+    >
+        <header
+    class="header header-mobile  index-header"
+>
+    <!-- top read progress line -->
+    <div class="header-element">
+        <div
+            class="read-progress"
+        ></div>
+    </div>
+
+    <!-- sidebar menu button -->
+    <div class="header-element">
+        <div
+            class="header-sidebar-menu"
+        >
+            
+            
+                <div style="padding-left: 1px">&#xe775;</div>
+            
+        </div>
+    </div>
+
+    <!-- header actions -->
+    <div class="header-actions">
+        <!-- theme mode switch button -->
+        <span class="header-theme-btn header-element">
+            <i class="fas fa-adjust"></i>
+        </span>
+        <!-- back to home page text -->
+        <span class="home-link header-element">
+            <a href="/">Java开发笔记</a>
+        </span>
+    </div>
+
+    <!-- toggle banner -->
+    <div class="banner">
+        <div class="blog-title header-element">
+            <a href="/">Java开发笔记</a>
+        </div>
+        <div class="post-title header-element">
+            <a href="#" class="post-name"></a>
+        </div>
+    </div>
+</header>
+
+        <footer
+    class="footer-fixed index-footer-fixed"
+>
+    <!-- donate popup -->
+    
+
+    <!-- donate button -->
+    
+
+    <!-- back to top button -->
+    <div
+        class="footer-fixed-btn footer-fixed-btn--hidden  back-top"
+    >
+        
+        <div>&#xe639;</div>
+    </div>
+</footer>
+
+        <div class="wrapper">
+            <html
+    lang="zh-CN"
+>
+    
+
+    <div
+        class="site-intro"
+        style="height: 50vh;"
+    >
+        <div class="site-intro-placeholder"></div>
+        <div
+            class="site-intro-img"
+            style="background-image: url(/themes/halo-theme-archer/assets/intro/index-bg.jpg);"
+        ></div>
+        <div class="site-intro-meta">
+            <h1 class="intro-title"> </h1>
+            <p class="intro-subtitle"></p>
+        </div>
+    </div>
+
+    
+
+    
+</html>
+
+            <img
+                class="loading"
+                src="/themes/halo-theme-archer/assets/loading.svg"
+                style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem"
+                alt="loading"
+            />
+
+            <div class="container container-unloaded">
+                
+        <!-- 右侧文章流 -->
+        <section class="main index-page">
+            
+                <article class="index-post">
+    <a class="abstract-title" href="/archives/seata-2.0-zhong-shi-wu-hui-gun-hou-try-to-proceed-invocation-errorwen-ti">
+        
+        <span class="abstract-title-text">Seata 2.0自定义异常变try to proceed invocation error问题</span>
+    </a>
+
+    
+        
+
+        <div class="abstract-content">
+            <div>在spring cloud 2023.0.2, seata2.0版本中会遇到如下问题： 业务逻辑抛出自定义异常后，上层捕获不到业务原始异常信息，只能看到类似： java.lang.RuntimeException: try to proceed invocation error
+at io.seat</div>
+            
+        </div>
+    
+
+    
+
+    <div class="abstract-post-meta">
+        <div>
+            <span class="iconfont-archer abstract-calander"></span>
+            <span>2024/08/14</span>
+            
+        </div>
+        <div class="abstract-tags">
+            <a
+                class="post-tag"
+                data-tags="tag-aklvy9sg"
+            >Seata</a>
+        </div>
+    </div>
+</article>
+                <div class="index-post-divider"></div>
+            
+                <article class="index-post">
+    <a class="abstract-title" href="/archives/virtual-thread">
+        
+        <span class="abstract-title-text">虚拟线程常见问题总结</span>
+    </a>
+
+    
+        
+
+        <div class="abstract-content">
+            <div>虚拟线程在 Java 21 正式发布，这是一项重量级的更新。 什么是虚拟线程？ 虚拟线程（Virtual Thread）是 JDK 而不是 OS 实现的轻量级线程(Lightweight Process，LWP），由 JVM 调度。许多虚拟线程共享同一个操作系统线程，虚拟线程的数量可以远大于操作系统</div>
+            
+        </div>
+    
+
+    
+
+    <div class="abstract-post-meta">
+        <div>
+            <span class="iconfont-archer abstract-calander"></span>
+            <span>2024/01/23</span>
+            
+        </div>
+        <div class="abstract-tags">
+            <a
+                class="post-tag"
+                data-tags="tag-r85nfmty"
+            >Thread</a>
+        </div>
+    </div>
+</article>
+                <div class="index-post-divider"></div>
+            
+                <article class="index-post">
+    <a class="abstract-title" href="/archives/springboot-auto-config">
+        
+        <span class="abstract-title-text">SpringBoot 自动装配原理</span>
+    </a>
+
+    
+        
+
+        <div class="abstract-content">
+            <div>前言 使用过 Spring 的小伙伴，一定有被 XML 配置统治的恐惧。即使 Spring 后面引入了基于注解的配置，我们在开启某些 Spring 特性或者引入第三方依赖的时候，还是需要用 XML 或 Java 进行显式配置。 举个例子。没有 Spring Boot 的时候，我们写一个 RestFu</div>
+            
+        </div>
+    
+
+    
+
+    <div class="abstract-post-meta">
+        <div>
+            <span class="iconfont-archer abstract-calander"></span>
+            <span>2022/04/16</span>
+            
+        </div>
+        <div class="abstract-tags">
+            <a
+                class="post-tag"
+                data-tags="tag-7pbiwv5l"
+            >Spring Boot</a>
+        </div>
+    </div>
+</article>
+                <div class="index-post-divider"></div>
+            
+                <article class="index-post">
+    <a class="abstract-title" href="/archives/spring-transaction">
+        
+        <span class="abstract-title-text">Spring 事务</span>
+    </a>
+
+    
+        
+
+        <div class="abstract-content">
+            <div>什么是事务？ 事务是逻辑上的一组操作，要么都执行，要么都不执行。 相信大家应该都能背上面这句话了，下面我结合我们日常的真实开发来谈一谈。 我们系统的每个业务方法可能包括了多个原子性的数据库操作，比如下面的 savePerson() 方法中就有两个原子性的数据库操作。这些原子性的数据库操作是有依赖的，</div>
+            
+        </div>
+    
+
+    
+
+    <div class="abstract-post-meta">
+        <div>
+            <span class="iconfont-archer abstract-calander"></span>
+            <span>2022/03/18</span>
+            
+        </div>
+        <div class="abstract-tags">
+            <a
+                class="post-tag"
+                data-tags="tag-4lvfpeqy"
+            >Spring</a>
+        </div>
+    </div>
+</article>
+                <div class="index-post-divider"></div>
+            
+                <article class="index-post">
+    <a class="abstract-title" href="/archives/ioc-aop">
+        
+        <span class="abstract-title-text">IoC &amp; AOP</span>
+    </a>
+
+    
+        
+
+        <div class="abstract-content">
+            <div>IoC （Inversion of control ） 什么是 IoC? IoC （Inversion of Control ）即控制反转/反转控制。它是一种思想不是一个技术实现。描述的是：Java 开发领域对象的创建以及管理的问题。 例如：现有类 A 依赖于类 B 传统的开发方式 ：往往是在类 A</div>
+            
+        </div>
+    
+
+    
+
+    <div class="abstract-post-meta">
+        <div>
+            <span class="iconfont-archer abstract-calander"></span>
+            <span>2021/12/18</span>
+            
+        </div>
+        <div class="abstract-tags">
+            <a
+                class="post-tag"
+                data-tags="tag-4lvfpeqy"
+            >Spring</a>
+        </div>
+    </div>
+</article>
+                <div class="index-post-divider"></div>
+            
+                <article class="index-post">
+    <a class="abstract-title" href="/archives/redis-persistent">
+        
+        <span class="abstract-title-text">Redis持久化机制</span>
+    </a>
+
+    
+        
+
+        <div class="abstract-content">
+            <div>使用缓存的时候，我们经常需要对内存中的数据进行持久化也就是将内存中的数据写入到硬盘中。大部分原因是为了之后重用数据（比如重启机器、机器故障之后恢复数据），或者是为了做数据同步（比如 Redis 集群的主从节点通过 RDB 文件同步数据）。 Redis 不同于 Memcached 的很重要一点就是，R</div>
+            
+        </div>
+    
+
+    
+
+    <div class="abstract-post-meta">
+        <div>
+            <span class="iconfont-archer abstract-calander"></span>
+            <span>2021/09/17</span>
+            
+        </div>
+        <div class="abstract-tags">
+            <a
+                class="post-tag"
+                data-tags="tag-aoyd28yc"
+            >Redis</a>
+        </div>
+    </div>
+</article>
+                <div class="index-post-divider"></div>
+            
+                <article class="index-post">
+    <a class="abstract-title" href="/archives/cache-strategy">
+        
+        <span class="abstract-title-text">3种常用的缓存读写策略详解</span>
+    </a>
+
+    
+        
+
+        <div class="abstract-content">
+            <div>很多小伙伴简历上写了“熟练使用缓存”，但是被问到“缓存常用的 3 种读写策略”的时候却一脸懵逼。 在我看来，造成这个问题的原因是我们在学习 Redis 的时候，可能只是简单写了一些 Demo，并没有去关注缓存的读写策略，或者说压根不知道这回事。 但是，搞懂 3 种常见的缓存读写策略对于实际工作中使用</div>
+            
+        </div>
+    
+
+    
+
+    <div class="abstract-post-meta">
+        <div>
+            <span class="iconfont-archer abstract-calander"></span>
+            <span>2021/07/06</span>
+            
+        </div>
+        <div class="abstract-tags">
+            <a
+                class="post-tag"
+                data-tags="tag-aoyd28yc"
+            >Redis</a>
+        </div>
+    </div>
+</article>
+                <div class="index-post-divider"></div>
+            
+                <article class="index-post">
+    <a class="abstract-title" href="/archives/redis-high-type">
+        
+        <span class="abstract-title-text">Redis 3 种特殊数据类型详解</span>
+    </a>
+
+    
+        
+
+        <div class="abstract-content">
+            <div>除了 5 种基本的数据类型之外，Redis 还支持 3 种特殊的数据类型：Bitmap、HyperLogLog、GEO。 Bitmap （位图） 介绍 根据官网介绍： Bitmaps are not an actual data type, but a set of bit-oriented ope</div>
+            
+        </div>
+    
+
+    
+
+    <div class="abstract-post-meta">
+        <div>
+            <span class="iconfont-archer abstract-calander"></span>
+            <span>2021/05/15</span>
+            
+        </div>
+        <div class="abstract-tags">
+            <a
+                class="post-tag"
+                data-tags="tag-aoyd28yc"
+            >Redis</a>
+        </div>
+    </div>
+</article>
+                <div class="index-post-divider"></div>
+            
+                <article class="index-post">
+    <a class="abstract-title" href="/archives/redis-base-type">
+        
+        <span class="abstract-title-text">Redis 5 种基本数据类型详解</span>
+    </a>
+
+    
+        
+
+        <div class="abstract-content">
+            <div>Redis 共有 5 种基本数据类型：String（字符串）、List（列表）、Set（集合）、Hash（散列）、Zset（有序集合）。 这 5 种数据类型是直接提供给用户使用的，是数据的保存形式，其底层实现主要依赖这 8 种数据结构：简单动态字符串（SDS）、LinkedList（双向链表）、Di</div>
+            
+        </div>
+    
+
+    
+
+    <div class="abstract-post-meta">
+        <div>
+            <span class="iconfont-archer abstract-calander"></span>
+            <span>2021/04/14</span>
+            
+        </div>
+        <div class="abstract-tags">
+            <a
+                class="post-tag"
+                data-tags="tag-aoyd28yc"
+            >Redis</a>
+        </div>
+    </div>
+</article>
+                <div class="index-post-divider"></div>
+            
+                <article class="index-post">
+    <a class="abstract-title" href="/archives/mysql-explain">
+        
+        <span class="abstract-title-text">MySQL执行计划分析</span>
+    </a>
+
+    
+        
+
+        <div class="abstract-content">
+            <div>什么是执行计划？ 执行计划 是指一条 SQL 语句在经过 MySQL 查询优化器 的优化后，具体的执行方式。 执行计划通常用于 SQL 性能分析、优化等场景。通过 EXPLAIN 的结果，可以了解到如数据表的查询顺序、数据查询操作的操作类型、哪些索引可以被命中、哪些索引实际会命中、每个数据表有多少行</div>
+            
+        </div>
+    
+
+    
+
+    <div class="abstract-post-meta">
+        <div>
+            <span class="iconfont-archer abstract-calander"></span>
+            <span>2021/03/02</span>
+            
+        </div>
+        <div class="abstract-tags">
+            <a
+                class="post-tag"
+                data-tags="tag-qmmkcpci"
+            >Mysql</a>
+        </div>
+    </div>
+</article>
+                
+            
+
+            <nav
+        class="page-nav"
+    >
+        
+
+        
+            <span class="page-number current">1</span>
+            
+        
+            
+            <a
+                class="page-number"
+                href="/page/2/"
+            >2</a>
+        
+            
+            <a
+                class="page-number"
+                href="/page/3/"
+            >3</a>
+        
+
+        <a class="extend next" rel="next" href="/page/2">NEXT &gt;</a>
+    </nav>
+        </section>
+
+        <!-- 左侧个人资料 -->
+        <aside
+    class="profile"
+>
+    
+        <img
+            class="profile-avatar"
+            src="/upload/8621e851c81ee5731eff1f1124721b7e.jpg"
+            alt="Notebook" sizes="(max-width: 640px) 94vw, (max-width: 768px) 92vw, (max-width: 1024px) 88vw, min(800px, 85vw)" srcset="/upload/8621e851c81ee5731eff1f1124721b7e.jpg?width=400 400w, /upload/8621e851c81ee5731eff1f1124721b7e.jpg?width=800 800w, /upload/8621e851c81ee5731eff1f1124721b7e.jpg?width=1600 1600w, /upload/8621e851c81ee5731eff1f1124721b7e.jpg?width=1200 1200w"
+        />
+    
+    <div class="profile-name">Notebook</div>
+    <div class="profile-signature"> </div>
+
+    
+
+    
+
+    
+</aside>
+    
+            </div>
+
+            <footer class="footer footer-unloaded">
+    <!-- social -->
+    
+
+    <!-- powered by -->
+    <div class="copyright">
+    <!--    <span id="halo-power">
+            Powered by
+            <a href="https://halo.run/" target="_blank" rel="noopener noreferrer">Halo</a>
+        </span>
+        <span class="iconfont-archer power">&#xe635;</span>
+        <span id="theme-info">
+            theme
+            <a href="https://github.com/Azincc/halo-theme-archer" target="_blank" rel="noopener noreferrer">Archer</a>
+        </span>
+    -->
+    </div>
+
+    <!-- beian information -->
+    
+
+    <!-- custom footer information -->
+    <div class="website-approve">
+        
+            
+                
+                <span class="icp-approve">
+                    <a
+                        href="https://beian.miit.gov.cn/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >粤ICP备2026012275号-1 </a>
+                    
+                </span>
+            
+        
+            
+                <img class="beian-img" src="/upload/%E5%A4%87%E6%A1%88%E5%9B%BE%E6%A0%87-QuEI.png" sizes="(max-width: 640px) 94vw, (max-width: 768px) 92vw, (max-width: 1024px) 88vw, min(800px, 85vw)" srcset="/upload/%E5%A4%87%E6%A1%88%E5%9B%BE%E6%A0%87-QuEI.png?width=400 400w, /upload/%E5%A4%87%E6%A1%88%E5%9B%BE%E6%A0%87-QuEI.png?width=800 800w, /upload/%E5%A4%87%E6%A1%88%E5%9B%BE%E6%A0%87-QuEI.png?width=1600 1600w, /upload/%E5%A4%87%E6%A1%88%E5%9B%BE%E6%A0%87-QuEI.png?width=1200 1200w" />
+                <span class="icp-approve">
+                    <a
+                        href="https://beian.mps.gov.cn/#/query/webSearch"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >粤公网安备44030002010540号</a>
+                    
+                </span>
+            
+        
+    </div>
+
+    <!-- busuanzi -->
+    
+</footer>
+        </div>
+
+        <!-- TOC -->
+        
+
+        <!-- Sidebar -->
+        <div
+    class="sidebar sidebar-hide"
+>
+    <ul class="sidebar-tabs sidebar-tabs-active-0">
+        <li class="sidebar-tab-archives">
+            <span class="iconfont-archer">&#xe67d;</span>
+            <span class="tab-name">Archive</span>
+        </li>
+        <li class="sidebar-tab-tags">
+            <span class="iconfont-archer">&#xe61b;</span>
+            <span class="tab-name">Tag</span>
+        </li>
+        <li class="sidebar-tab-categories">
+            <span class="iconfont-archer">&#xe666;</span>
+            <span class="tab-name">Cate</span>
+        </li>
+    </ul>
+    <div class="sidebar-content sidebar-content-show-archive">
+        <!-- Archives Panel -->
+        <div class="sidebar-panel-archives">
+            <div class="total-and-search">
+                <div class="total-archive">
+                    Total :
+                    <span>24</span>
+                </div>
+                <!-- search -->
+                <div
+                    class="site-search"
+                    onclick="SearchWidget.open()"
+                >
+                    <span class="iconfont-archer search-icon">&#xe627;</span>
+                </div>
+            </div>
+            <div class="post-archive">
+                
+                    
+                        
+                            
+                                
+                                <div class="archive-year">2024</div>
+                                <ul class="year-list">
+                            
+                            <li class="archive-post-item">
+                                <span
+                                    class="archive-post-date"
+                                >08/14</span>
+                                <a
+                                    class="archive-post-title"
+                                    href="/archives/seata-2.0-zhong-shi-wu-hui-gun-hou-try-to-proceed-invocation-errorwen-ti"
+                                >Seata 2.0自定义异常变try to proceed invocation error问题</a>
+                            </li>
+                            
+                        
+                    
+                        
+                            
+                            <li class="archive-post-item">
+                                <span
+                                    class="archive-post-date"
+                                >01/23</span>
+                                <a
+                                    class="archive-post-title"
+                                    href="/archives/virtual-thread"
+                                >虚拟线程常见问题总结</a>
+                            </li>
+                            
+                        
+                    
+                        
+                            
+                                </ul>
+                                <div class="archive-year">2022</div>
+                                <ul class="year-list">
+                            
+                            <li class="archive-post-item">
+                                <span
+                                    class="archive-post-date"
+                                >04/16</span>
+                                <a
+                                    class="archive-post-title"
+                                    href="/archives/springboot-auto-config"
+                                >SpringBoot 自动装配原理</a>
+                            </li>
+                            
+                        
+                    
+                        
+                            
+                            <li class="archive-post-item">
+                                <span
+                                    class="archive-post-date"
+                                >03/18</span>
+                                <a
+                                    class="archive-post-title"
+                                    href="/archives/spring-transaction"
+                                >Spring 事务</a>
+                            </li>
+                            
+                        
+                    
+                        
+                            
+                                </ul>
+                                <div class="archive-year">2021</div>
+                                <ul class="year-list">
+                            
+                            <li class="archive-post-item">
+                                <span
+                                    class="archive-post-date"
+                                >12/18</span>
+                                <a
+                                    class="archive-post-title"
+                                    href="/archives/ioc-aop"
+                                >IoC &amp; AOP</a>
+                            </li>
+                            
+                        
+                    
+                        
+                            
+                            <li class="archive-post-item">
+                                <span
+                                    class="archive-post-date"
+                                >09/17</span>
+                                <a
+                                    class="archive-post-title"
+                                    href="/archives/redis-persistent"
+                                >Redis持久化机制</a>
+                            </li>
+                            
+                        
+                    
+                        
+                            
+                            <li class="archive-post-item">
+                                <span
+                                    class="archive-post-date"
+                                >07/06</span>
+                                <a
+                                    class="archive-post-title"
+                                    href="/archives/cache-strategy"
+                                >3种常用的缓存读写策略详解</a>
+                            </li>
+                            
+                        
+                    
+                        
+                            
+                            <li class="archive-post-item">
+                                <span
+                                    class="archive-post-date"
+                                >05/15</span>
+                                <a
+                                    class="archive-post-title"
+                                    href="/archives/redis-high-type"
+                                >Redis 3 种特殊数据类型详解</a>
+                            </li>
+                            
+                        
+                    
+                        
+                            
+                            <li class="archive-post-item">
+                                <span
+                                    class="archive-post-date"
+                                >04/14</span>
+                                <a
+                                    class="archive-post-title"
+                                    href="/archives/redis-base-type"
+                                >Redis 5 种基本数据类型详解</a>
+                            </li>
+                            
+                        
+                    
+                        
+                            
+                            <li class="archive-post-item">
+                                <span
+                                    class="archive-post-date"
+                                >03/02</span>
+                                <a
+                                    class="archive-post-title"
+                                    href="/archives/mysql-explain"
+                                >MySQL执行计划分析</a>
+                            </li>
+                            
+                        
+                    
+                        
+                            
+                            <li class="archive-post-item">
+                                <span
+                                    class="archive-post-date"
+                                >02/28</span>
+                                <a
+                                    class="archive-post-title"
+                                    href="/archives/mysql-transaction"
+                                >MySQL事务隔离级别详解</a>
+                            </li>
+                            
+                        
+                    
+                        
+                            
+                            <li class="archive-post-item">
+                                <span
+                                    class="archive-post-date"
+                                >02/26</span>
+                                <a
+                                    class="archive-post-title"
+                                    href="/archives/mysql-index"
+                                >MySQL索引详解</a>
+                            </li>
+                            
+                        
+                    
+                        
+                            
+                                </ul>
+                                <div class="archive-year">2020</div>
+                                <ul class="year-list">
+                            
+                            <li class="archive-post-item">
+                                <span
+                                    class="archive-post-date"
+                                >10/30</span>
+                                <a
+                                    class="archive-post-title"
+                                    href="/archives/classload"
+                                >类加载器详解</a>
+                            </li>
+                            
+                        
+                    
+                        
+                            
+                            <li class="archive-post-item">
+                                <span
+                                    class="archive-post-date"
+                                >10/28</span>
+                                <a
+                                    class="archive-post-title"
+                                    href="/archives/jvm-gc"
+                                >JVM垃圾回收</a>
+                            </li>
+                            
+                        
+                    
+                        
+                            
+                            <li class="archive-post-item">
+                                <span
+                                    class="archive-post-date"
+                                >10/27</span>
+                                <a
+                                    class="archive-post-title"
+                                    href="/archives/jvm-memory"
+                                >Java内存区域详解</a>
+                            </li>
+                            
+                        
+                    
+                        
+                            
+                            <li class="archive-post-item">
+                                <span
+                                    class="archive-post-date"
+                                >10/26</span>
+                                <a
+                                    class="archive-post-title"
+                                    href="/archives/completablefuture"
+                                >CompletableFuture</a>
+                            </li>
+                            
+                        
+                    
+                        
+                            
+                            <li class="archive-post-item">
+                                <span
+                                    class="archive-post-date"
+                                >10/18</span>
+                                <a
+                                    class="archive-post-title"
+                                    href="/archives/threadlocal"
+                                >ThreadLocal</a>
+                            </li>
+                            
+                        
+                    
+                        
+                            
+                            <li class="archive-post-item">
+                                <span
+                                    class="archive-post-date"
+                                >10/13</span>
+                                <a
+                                    class="archive-post-title"
+                                    href="/archives/threadpool"
+                                >Java 线程池</a>
+                            </li>
+                            
+                        
+                    
+                        
+                            
+                            <li class="archive-post-item">
+                                <span
+                                    class="archive-post-date"
+                                >10/09</span>
+                                <a
+                                    class="archive-post-title"
+                                    href="/archives/lock-series"
+                                >乐观锁、悲观锁和CAS</a>
+                            </li>
+                            
+                        
+                    
+                        
+                            
+                            <li class="archive-post-item">
+                                <span
+                                    class="archive-post-date"
+                                >09/27</span>
+                                <a
+                                    class="archive-post-title"
+                                    href="/archives/copyonwritearraylist"
+                                >CopyOnWriteArrayList 源码分析</a>
+                            </li>
+                            
+                        
+                    
+                        
+                            
+                            <li class="archive-post-item">
+                                <span
+                                    class="archive-post-date"
+                                >09/25</span>
+                                <a
+                                    class="archive-post-title"
+                                    href="/archives/concurrenthashmap"
+                                >ConcurrentHashMap 源码分析</a>
+                            </li>
+                            
+                        
+                    
+                        
+                            
+                            <li class="archive-post-item">
+                                <span
+                                    class="archive-post-date"
+                                >09/22</span>
+                                <a
+                                    class="archive-post-title"
+                                    href="/archives/hashmap"
+                                >HashMap 源码分析</a>
+                            </li>
+                            
+                        
+                    
+                        
+                            
+                            <li class="archive-post-item">
+                                <span
+                                    class="archive-post-date"
+                                >09/18</span>
+                                <a
+                                    class="archive-post-title"
+                                    href="/archives/linkedlist"
+                                >LinkedList 源码分析</a>
+                            </li>
+                            
+                        
+                    
+                        
+                            
+                            <li class="archive-post-item">
+                                <span
+                                    class="archive-post-date"
+                                >09/17</span>
+                                <a
+                                    class="archive-post-title"
+                                    href="/archives/arraylist"
+                                >ArrayList 源码分析</a>
+                            </li>
+                            </ul>
+                        
+                    
+                
+            </div>
+        </div>
+
+        <!-- Tags Panel -->
+        <div class="sidebar-panel-tags">
+            <div class="sidebar-tags-name">
+                
+                    <a
+                        class="sidebar-tag-name"
+                        href="/tags/seata" data-tags="Seata"
+                    >
+                        <span class="iconfont-archer" data-tags="Seata">&#xe606;</span>
+                        <span data-tags="Seata">Seata</span>
+                    </a>
+                
+                    <a
+                        class="sidebar-tag-name"
+                        href="/tags/rabbitmq" data-tags="RabbitMQ"
+                    >
+                        <span class="iconfont-archer" data-tags="RabbitMQ">&#xe606;</span>
+                        <span data-tags="RabbitMQ">RabbitMQ</span>
+                    </a>
+                
+                    <a
+                        class="sidebar-tag-name"
+                        href="/tags/jvm" data-tags="JVM"
+                    >
+                        <span class="iconfont-archer" data-tags="JVM">&#xe606;</span>
+                        <span data-tags="JVM">JVM</span>
+                    </a>
+                
+                    <a
+                        class="sidebar-tag-name"
+                        href="/tags/thread" data-tags="Thread"
+                    >
+                        <span class="iconfont-archer" data-tags="Thread">&#xe606;</span>
+                        <span data-tags="Thread">Thread</span>
+                    </a>
+                
+                    <a
+                        class="sidebar-tag-name"
+                        href="/tags/lock" data-tags="Lock"
+                    >
+                        <span class="iconfont-archer" data-tags="Lock">&#xe606;</span>
+                        <span data-tags="Lock">Lock</span>
+                    </a>
+                
+                    <a
+                        class="sidebar-tag-name"
+                        href="/tags/map" data-tags="Map"
+                    >
+                        <span class="iconfont-archer" data-tags="Map">&#xe606;</span>
+                        <span data-tags="Map">Map</span>
+                    </a>
+                
+                    <a
+                        class="sidebar-tag-name"
+                        href="/tags/list" data-tags="List"
+                    >
+                        <span class="iconfont-archer" data-tags="List">&#xe606;</span>
+                        <span data-tags="List">List</span>
+                    </a>
+                
+                    <a
+                        class="sidebar-tag-name"
+                        href="/tags/spring" data-tags="Spring"
+                    >
+                        <span class="iconfont-archer" data-tags="Spring">&#xe606;</span>
+                        <span data-tags="Spring">Spring</span>
+                    </a>
+                
+                    <a
+                        class="sidebar-tag-name"
+                        href="/tags/redis" data-tags="Redis"
+                    >
+                        <span class="iconfont-archer" data-tags="Redis">&#xe606;</span>
+                        <span data-tags="Redis">Redis</span>
+                    </a>
+                
+                    <a
+                        class="sidebar-tag-name"
+                        href="/tags/mysql" data-tags="Mysql"
+                    >
+                        <span class="iconfont-archer" data-tags="Mysql">&#xe606;</span>
+                        <span data-tags="Mysql">Mysql</span>
+                    </a>
+                
+                    <a
+                        class="sidebar-tag-name"
+                        href="/tags/spring-boot" data-tags="Spring Boot"
+                    >
+                        <span class="iconfont-archer" data-tags="Spring Boot">&#xe606;</span>
+                        <span data-tags="Spring Boot">Spring Boot</span>
+                    </a>
+                
+                    <a
+                        class="sidebar-tag-name"
+                        href="/tags/java" data-tags="Java"
+                    >
+                        <span class="iconfont-archer" data-tags="Java">&#xe606;</span>
+                        <span data-tags="Java">Java</span>
+                    </a>
+                
+            </div>
+            <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
+            <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem">
+                缺失模块，请参考主题文档进行安装配置
+            </div>
+            <div class="sidebar-tags-list"></div>
+        </div>
+
+        <!-- Categories Panel -->
+        <div class="sidebar-panel-categories">
+            <div class="sidebar-categories-name">
+                
+                    <a
+                        class="sidebar-category-name"
+                        href="/categories/experience" data-categories="案例经验"
+                    >
+                        <span class="iconfont-archer" data-categories="案例经验">
+                            &#xe60a;
+                        </span>
+                        <span
+                            data-categories="案例经验"
+                        >案例经验</span>
+                    </a>
+                
+                    <a
+                        class="sidebar-category-name"
+                        href="/categories/systemdesign" data-categories="系统设计"
+                    >
+                        <span class="iconfont-archer" data-categories="系统设计">
+                            &#xe60a;
+                        </span>
+                        <span
+                            data-categories="系统设计"
+                        >系统设计</span>
+                    </a>
+                
+                    <a
+                        class="sidebar-category-name"
+                        href="/categories/mq" data-categories="消息队列"
+                    >
+                        <span class="iconfont-archer" data-categories="消息队列">
+                            &#xe60a;
+                        </span>
+                        <span
+                            data-categories="消息队列"
+                        >消息队列</span>
+                    </a>
+                
+                    <a
+                        class="sidebar-category-name"
+                        href="/categories/db" data-categories="数据库"
+                    >
+                        <span class="iconfont-archer" data-categories="数据库">
+                            &#xe60a;
+                        </span>
+                        <span
+                            data-categories="数据库"
+                        >数据库</span>
+                    </a>
+                
+                    <a
+                        class="sidebar-category-name"
+                        href="/categories/springseries" data-categories="Spring系列"
+                    >
+                        <span class="iconfont-archer" data-categories="Spring系列">
+                            &#xe60a;
+                        </span>
+                        <span
+                            data-categories="Spring系列"
+                        >Spring系列</span>
+                    </a>
+                
+                    <a
+                        class="sidebar-category-name"
+                        href="/categories/javabase" data-categories="Java基础"
+                    >
+                        <span class="iconfont-archer" data-categories="Java基础">
+                            &#xe60a;
+                        </span>
+                        <span
+                            data-categories="Java基础"
+                        >Java基础</span>
+                    </a>
+                
+                    <a
+                        class="sidebar-category-name"
+                        href="/categories/default" data-categories="默认分类"
+                    >
+                        <span class="iconfont-archer" data-categories="默认分类">
+                            &#xe60a;
+                        </span>
+                        <span
+                            data-categories="默认分类"
+                        >默认分类</span>
+                    </a>
+                
+            </div>
+            <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>
+            <div class="sidebar-categories-list"></div>
+        </div>
+    </div>
+</div>
+
+        <!-- Site metadata for sidebar JavaScript -->
+        <script>
+    /*<![CDATA[*/
+    window.siteMeta = {
+        root: '/*"https:\/\/www.hideshadow.com"*/',
+        author: '/*"Java\u5F00\u53D1\u7B14\u8BB0"*/',
+    };
+    /*]]>*/
+</script>
+
+        <script src="/themes/halo-theme-archer/assets/dist/main.js" type="module"></script>
+        <script>
+            (function () {
+                var scheme = "system";
+                window.__archerMainCallbacks = window.__archerMainCallbacks || [];
+                window.__archerMainCallbacks.push(function (mainModule) {
+                    if (mainModule && typeof mainModule.initializeColorScheme === 'function') {
+                        mainModule.initializeColorScheme(scheme);
+                    }
+                });
+                if (window.main && typeof window.main.initializeColorScheme === 'function') {
+                    window.main.initializeColorScheme(scheme);
+                }
+            })();
+        </script>
+        <script
+            src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.36/dist/fancybox/fancybox.umd.js"
+            onload="window.Fancybox && window.Fancybox.bind('[data-fancybox]')"
+            defer
+        ></script>
+
+        
+
+        
+
+        <!-- Mermaid Diagrams -->
+        
+
+        <!-- MathJax LaTeX -->
+        
+
+        
+
+        <!-- Halo 代码注入：页脚 -->
+        
+    <!-- Static homepage snapshot; backend features intentionally removed. -->
+</body>
+</html>
